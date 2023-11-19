@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="navbar">
+    <div class="left">
+      Logo
+    </div>
+
+    <div class="right">
+      <div class="user-iconn">
+        <input type="checkbox" class="checkbox" id="checkbox">
+       <label for="checkbox" class="checkbox-label">
+       <i class="fas fa-moon"></i>
+       <i class="fas fa-sun"></i>
+        <span class="ball"></span> 
+      </div>
+      <li>Home</li>
+      <li>About</li>
+      <li>services</li>
+      
+    </div>
+         
+          </label>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="wrapper">
+   
+    <section>
+
+   <div class="signin"> 
+
+    <div class="content"> 
+
+     <h2>Sign In</h2> 
+     <div class="options">
+        <div class="admin" onclick="go_admin()" id="goto-user"><h3 ><p id="admin">Admin</p></h3></div>
+        <div class="user" onclick="go_user()" id="goto-admin"><h3><p id="user">User</p></h3></div>
+     </div>
+
+     <div class="form"> 
+
+      <div class="inputBox"> 
+
+       <input type="text" id="username" required> <i>Username</i> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="password" id="pass" required> <i>Password</i> 
+
+      </div> 
+
+      <div class="links"> <a href="#">Forgot Password</a> <a href="#">Signup</a> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="submit" value="Login" onclick="checkPass()"> 
+
+      </div> 
+
+     </div> 
+
+    </div> 
+
+   </div> 
+
+  </section> 
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="../static/js/script.js"></script>
+</div>
+
+        
+    
+</body>
+</html>

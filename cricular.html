@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}"> -->
+    <link rel="stylesheet" href="../static/css/user.css">
+    <link rel="stylesheet" href="../static/css/cicular.css">
+   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper-user">
+        <div class="navbar-user">
+            <div class="left">
+              USER
+            </div>
+        
+            <div class="right">
+              <div class="user-iconn">
+                <input type="checkbox" class="checkbox" id="checkbox">
+               <label for="checkbox" class="checkbox-label">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+                <span class="ball"></span> 
+              </label>
+              </div>
+              <li>Home</li>
+              <li>About</li>
+              <li>services</li>
+            </div>
+        </div>
+        <div class="content-user"> 
+            <div class="content-inner-div">
+                <div class="upper-div">
+                    <div class="loader"></div>
+                    <div class="timer-div">00:00</div>
+                </div>
+                <div class="box-div">
+                    <div class="tense-div">to be</div>
+                    <div class="container-wrapper">
+                        <div class="container" id="spiral-container"></div>
+                    </div>         
+                    <div class="options-button">
+                        <div class="inner-options">
+                            <button id="Am" onclick="submit_answer('Am')">am</button>
+                            <button id="Is" onclick="submit_answer('Is')">is</button>
+                            <button id="are" onclick="submit_answer('are')">are</button>
+                        </div>
+                    </div>
+                    <div class="start-but">
+                        <input id="input-field" type="text" placeholder="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/circular.js"></script>
+    <script src="../static/js/script.js"></script>
+  
+    <!-- <script src="../static/js/box.js"></script> -->
+</body>
+</html>

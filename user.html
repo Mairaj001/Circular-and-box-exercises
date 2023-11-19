@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+    <link rel="stylesheet" href="../static/css/user.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper-user">
+        <div class="navbar-user">
+            <div class="left">
+              USER
+            </div>
+        
+            <div class="right">
+              <div class="user-iconn">
+                <input type="checkbox" class="checkbox" id="checkbox">
+               <label for="checkbox" class="checkbox-label">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+                <span class="ball"></span> 
+              </div>
+              <li>Home</li>
+              <li>About</li>
+              <li>services</li>
+            
+            </div>
+        </div>
+
+
+            <div class="content-user">
+              <div class="content-inner-div">
+                <div class="upper-div">
+                  <div class="loader">
+                    <div id="progress"></div>
+                  </div>
+                  <div class="timer-div">
+                    00:00
+                  </div>
+                </div>
+                <div class="box-div">
+                  <div class="tense-div">
+                    to be
+                  </div>
+                  <div class="row" id="row1">
+                    <div class="first">I -</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row2">
+                    <div class="first" >I -</div>
+                    <div class="have" contenteditable="true"></div>
+                   
+                  </div>
+                  <div class="row" id="row3">
+                    <div class="first" >I -</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row4">
+                    <div class="first" >I -</div>
+                    <div class="have" contenteditable="true"></div>
+                   
+                  </div>
+                  <div class="row" id="row5">
+                    <div class="first" >I -</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row6">
+                    <div class="first" >I -</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row7">
+                    <div class="first" >You ^</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row8">
+                    <div class="first" >You ^</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row9">
+                    <div class="first" >You ^</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  </div>
+                  <div class="row" id="row10">
+                    <div class="first" >You ^</div>
+                    <div class="have" contenteditable="true"></div>
+                    
+                  
+
+                  
+                </div>
+                <div class="options-button">
+                  <div class="inner-options">
+                  <button id="have-but">Is</button>
+                  <button id="has-but">am</button>
+                  <button id="been-but">are</button>
+                </div>
+                <div class="next-but">
+                  <button id="next" onclick="load_newone()"><i class="ri-arrow-right-s-line"></i></button>
+                </div>
+                </div>
+                <div class="start-but">
+                 <button id="start-button">Start</button>
+                </div>
+              </div>
+            </div>
+
+           <script src="../static/js/script.js"></script>
+           <script src="../static/js/box2.js"></script>
+           <script src="../static/js/box.js"></script>
+    </div>
+</body>
+</html>

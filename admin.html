@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="../static/css/admin.css">
+
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="wrapper-admin">
+        <div class="navbar">
+            <div class="left">
+              ADMIN
+            </div>
+        
+            <div class="right">
+              <div class="user-iconn">
+                <input type="checkbox" class="checkbox" id="checkbox">
+               <label for="checkbox" class="checkbox-label">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+                <span class="ball"></span> 
+              </div>
+              <li>Home</li>
+              <li>About</li>
+              <li>services</li>
+              
+            </div>
+            </div>
+            <div class="user-info">
+              <span>User1</span><br>
+              <span id="time-taken"></span><br>
+              <span id="right-ans">Right attempted 10</span><br>
+              <span id="wrong">Wrong attempted 4</span><br>
+              <div id="time-taken">Time Taken:</div>
+            </div>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/admin.js"></script>
+    <script src="../static/js/box.js"></script>
+    <script>
+      document.getElementById('time-taken').innerHTML+=localStorage.getItem('user');
+    </script>
+</body>
+</html>
