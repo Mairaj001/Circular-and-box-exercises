@@ -398,7 +398,7 @@ function open_index()
     window.location.href="index.html"
 }
 
-  let arr=['I ↓', 'You ↑', 'He ←', 'She →', 'It −', 'they ↑↑', 'We ↓↓'];
+  let arr=['I ↓', 'You ↑', 'He ←', 'She →', 'It −']//, 'they ↑↑', 'We ↓↓'];
 let counter =0;
 
 function load_newone(){

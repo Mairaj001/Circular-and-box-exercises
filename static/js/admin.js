@@ -1,5 +1,17 @@
 let neg = localStorage.getItem('user1-neg');
+let pos = localStorage.getItem('user1-pos');
+
+if(pos == 100)
+{
+   right_attempts=0;
+}
+else{
+    right_attempts=100;
+}
+
+
 let right_attempts = 100 - parseInt(neg || 0); // Assuming the total attempts are 100
+
 
 // Select the elements in your HTML where you want to display the scores
 let rightAttemptedElement = document.getElementById('right-ans');
