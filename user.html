@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
-    <link rel="stylesheet" href="../static/css/user.css">
+    <link rel="stylesheet" href="static/css/user.css">
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -24,7 +24,7 @@
                <i class="fas fa-sun"></i>
                 <span class="ball"></span> 
               </div>
-              <li>Home</li>
+              <a href="index.html"><li >Home</li></a>
               <li>About</li>
               <li>services</li>
             
@@ -47,77 +47,76 @@
                     to be
                   </div>
                   <div class="row" id="row1">
-                    <div class="first">I -</div>
-                    <div class="have" contenteditable="true"></div>
+                    <div class="first">I ↓</div>
+                    <div class="have" id="first-have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row2">
-                    <div class="first" >I -</div>
+                    <div class="first" >I ↓</div>
                     <div class="have" contenteditable="true"></div>
                    
                   </div>
                   <div class="row" id="row3">
-                    <div class="first" >I -</div>
+                    <div class="first" >I ↓</div>
                     <div class="have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row4">
-                    <div class="first" >I -</div>
+                    <div class="first" >I ↓</div>
                     <div class="have" contenteditable="true"></div>
                    
                   </div>
                   <div class="row" id="row5">
-                    <div class="first" >I -</div>
+                    <div class="first" >I ↓</div>
                     <div class="have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row6">
-                    <div class="first" >I -</div>
+                    <div class="first" >I ↓</div>
                     <div class="have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row7">
-                    <div class="first" >You ^</div>
+                    <div class="first" >You ↑</div>
                     <div class="have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row8">
-                    <div class="first" >You ^</div>
+                    <div class="first" >You ↑</div>
                     <div class="have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row9">
-                    <div class="first" >You ^</div>
+                    <div class="first" >You ↑</div>
                     <div class="have" contenteditable="true"></div>
                     
                   </div>
                   <div class="row" id="row10">
-                    <div class="first" >You ^</div>
+                    <div class="first" >You ↑</div>
                     <div class="have" contenteditable="true"></div>
-                    
-                  
+                             
 
                   
                 </div>
                 <div class="options-button">
-                  <div class="inner-options">
-                  <button id="have-but">Is</button>
-                  <button id="has-but">am</button>
-                  <button id="been-but">are</button>
+                  <div class="inner-options" style="margin-right: 70px;">
+                  <button id="Is-but" onclick="Is_button('Is')" disabled>Is</button>
+                  <button id="am-but" onclick="Am_button('am')"disabled>am</button>
+                  <button id="are-but" onclick="Are_button('are')"disabled >are</button>
                 </div>
-                <div class="next-but">
+                <div class="next-but" style="display: none;">
                   <button id="next" onclick="load_newone()"><i class="ri-arrow-right-s-line"></i></button>
                 </div>
                 </div>
-                <div class="start-but">
-                 <button id="start-button">Start</button>
+                <div class="start-but" >
+                 <button id="start-button" onclick="enable_buttons()" >Start</button>
                 </div>
               </div>
             </div>
 
-           <script src="../static/js/script.js"></script>
-           <script src="../static/js/box2.js"></script>
-           <script src="../static/js/box.js"></script>
+           <script src="static/js/script.js"></script>
+           <script src="static/js/box2.js"></script>
+           <!-- <script src="static/js/box.js"></script> -->
     </div>
 </body>
 </html>

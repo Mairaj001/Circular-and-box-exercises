@@ -129,6 +129,9 @@ html,body
   /* background-color: #0f0; */
   margin-bottom: 10px;
 }
+a{
+  text-decoration: none;
+}
 .tense-div{
   margin-top: 5px;
   display: flex;
@@ -173,6 +176,9 @@ html,body
 }
 .have{
   color:black;
+}
+.focused{
+  border:1px solid lightskyblue;
 }
 
 .options-button{
