@@ -426,9 +426,11 @@ function load_newone(){
     })
    }
    else{
-    let scores = JSON.parse(localStorage.getItem('scores')) || [];
-    scores.push(score,negscore,formattedTime);
-    localStorage.setItem('scores', JSON.stringify(scores));
+    localStorage.setItem("user1-pos",score)
+    localStorage.setItem("user1-neg",negscore)
+    localStorage.setItem("time",formattedTime);
+
+   
     alert("You have completed 10 exeerices");
     stopTimer();
     window.location.href="cricular.html"
@@ -438,6 +440,8 @@ function load_newone(){
 
 
 let storedScores = JSON.parse(localStorage.getItem('scores'));
+
+
 
 
 if (storedScores) {
