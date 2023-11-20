@@ -28,9 +28,7 @@ function updateTimer() {
   const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
 
    formattedTime = formatTime(hours, minutes, seconds);
-   console.log(formattedTime);
-  const event = new CustomEvent('dataEvent', { detail: formattedTime });
-  document.dispatchEvent(event);
+ 
   
 }
 
@@ -102,11 +100,31 @@ for (let i = 0; i < buttonCount; i++) {
 
 updateButtonPositions();
 
-
+let itr=0;
+let u_itr=0;
 
 let currentIndex=1;
 const buttons = document.querySelectorAll('#spiral-container button');
 function shiftColor() {
+  itr++;
+  if(itr<5)
+  {
+    currentIndex=0;
+  }
+  else if(u_itr<5)
+  {
+    u_itr++;
+    currentIndex=1;
+    if(u_itr==5)
+    {
+      currentIndex=0;
+    }
+  }
+
+  else{
+    currentIndex = (currentIndex + 1) % buttons.length;
+    console.log(currentIndex);
+  }
     buttons.forEach((button, index) => {
       if (index === currentIndex) {
         button.style.backgroundColor = 'orange';
@@ -114,20 +132,69 @@ function shiftColor() {
         button.style.backgroundColor = '';
       }
     });
-  
-    currentIndex = (currentIndex + 1) % buttons.length;
-    console.log(currentIndex);
+    
+
+    
 }
 
+
+
+
+
+let progress = 1;
+const maxProgress = 12;
+const progress_div=document.getElementById('progress');
+
+function fill_progress()
+{
+    if (progress < maxProgress) {
+        progress++;
+        const percent = (progress / maxProgress) * 100;
+        progress_div.style.width = percent + '%';
+        console.log("progress",progress_div)
+    }
+}
+
+
 let counter=-1;
+let sec_int;
+let cc_pp=0; //counter for loader
+let prog_coutner_circle=0; // counts 100 ex
+
+fill_progress();
 
 function submit_answer(text)
 {
-  counter++;
+ cc_pp++;
+ prog_coutner_circle++;
+  if(cc_pp==10)
+ {
+  fill_progress();
+  cc_pp=0
+ }
+  if(prog_coutner_circle===100)
+ {
+  
+  stopTimer();
+  console.log(prog_coutner_circle)
+   localStorage.setItem("user1-pos-circ",score);
+    localStorage.setItem("user1-neg-circ",negScore)
+    localStorage.setItem("time-circ",formattedTime);
+   document.getElementById('are').setAttribute('disabled','true');
+   
+   document.getElementById('Am').setAttribute('disabled','true');
+   document.getElementById('Is').setAttribute('disabled','true');
+   alert("You have completed the 100 exercies");
+
+  } 
+   counter++;
     input_field.value=text;
-     if(counter==2)
+     if(counter==100)
      {
-      stopTimer();
+      // stopTimer();
+      console.log("completed");
+      
+
      }
    
     
@@ -155,7 +222,7 @@ function submit_answer(text)
             button.classList.toggle('green')
          
         }, 420);
-        let sec_int= setTimeout(() => {
+         setTimeout(() => {
             clearInterval(intervals);
             button.style.background=" #3498db"
             console.log("false");
@@ -167,7 +234,7 @@ function submit_answer(text)
      }
     
     
- }
+}
  setTimeout(() => {
     set_interval();
     clearTimeout(sec_int);
