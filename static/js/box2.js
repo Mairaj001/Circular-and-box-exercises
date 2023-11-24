@@ -2,6 +2,8 @@ let startTime = 0;
 let timerInterval;
 let isRunning = false;
 let formattedTime=0;
+let timer_show=document.getElementById('timer_div');
+
 
 
 function startTimer() {
@@ -27,6 +29,9 @@ function updateTimer() {
     const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
   
      formattedTime = formatTime(hours, minutes, seconds);
+     timer_show.textContent=formattedTime;
+     console.log(timer_show);
+
     //  console.log(formattedTime);
     
     

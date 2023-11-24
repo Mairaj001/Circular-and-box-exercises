@@ -22,7 +22,7 @@ function checkPass(){
         if(username=="admin" && password=="admin")
         {
             console.log('access granted to admin');
-            window.location.href = "admin.html"
+            window.location.href = "admin2.html"
         }
         else{
             console.log("access does not granted to admin")
@@ -51,3 +51,37 @@ checkbox.addEventListener("change", () => {
   document.body.classList.toggle("dark")
 })
 
+let login_toggle=false;
+
+function show_signup(){
+    let sigin_in_header=document.getElementById('signIn');
+    let options_div= document.getElementById('options');
+    let forgot=document.getElementById('forgot');
+    let signUp=document.getElementById('signUp');
+    let login_but=document.getElementById('login_but');
+
+    console.log(sigin_in_header,options_div,forgot,signUp,login_but);
+
+    let signUp_text=signUp.textContent;
+    console.log(signUp_text);
+
+    if(signUp_text=="Signup")
+    {
+       sigin_in_header.textContent="Sign Up";
+       options_div.style.display="none";
+       forgot.textContent="";
+       login_but.value="Register";
+       signUp.textContent="Login"
+
+    }
+    else if(signUp_text=="Login")
+    {
+        sigin_in_header.textContent="Sign In ";
+        options_div.style.display="flex";
+        forgot.textContent="Forgot Password";
+        login_but.value="Sigin In";
+        signUp.textContent="Signup"
+    }
+
+
+}

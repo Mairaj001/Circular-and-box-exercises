@@ -6,6 +6,53 @@
     <title>Testing</title>
 </head>
 <body>
+    <div class="row">
+        <div class="input">
+            <label for="numRows">How many rows </label>
+            <input type="text" id="numRows">
+        </div>
+        <div class="input">
+            <label for="numColumns">How many columns</label>
+            <input type="text" id="numColumns">
+        </div>
+    </div>
+    <div class="container">
+        
+    </div>
+    <button id="generate-button">Generate Table</button>
+    <div id="table-container"></div>
+    
+    
+    <script>
+    document.getElementById('generate-button').addEventListener('click', function() {
+    const container = document.getElementById('container');
+    const numberOfRows = 6; // You can set the number of rows here
+
+    // Clear previous content
+    container.innerHTML = '';
+
+    // Generate rows dynamically
+    for (let i = 1; i <= numberOfRows; i++) {
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('row');
+        rowDiv.id = `row${i}`;
+
+        const firstDiv = document.createElement('div');
+        firstDiv.classList.add('first');
+        firstDiv.textContent = 'I ↓';
+
+        const haveDiv = document.createElement('div');
+        haveDiv.classList.add('have');
+        haveDiv.contentEditable = true;
+
+        rowDiv.appendChild(firstDiv);
+        rowDiv.appendChild(haveDiv);
+
+        container.appendChild(rowDiv);
+    }
+});
+
+    </script>
     
 </body>
 </html>
