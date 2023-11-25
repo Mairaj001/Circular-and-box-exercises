@@ -363,6 +363,7 @@ async function loadUsers() {
 		const data = snapshot.val();
 		const usernames = Object.values(data).map(child => child.username);
 		console.log(usernames);
+		document.getElementById('total_users').textContent=usernames.length;
 		return usernames;
 	  } else {
 		console.log('No data available');
