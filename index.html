@@ -43,8 +43,8 @@
 
      <h2 id="signIn">Sign In</h2> 
      <div class="options" id="options">
-        <div class="admin" onclick="go_admin()" id="goto-user"><h3 ><p id="admin">Admin</p></h3></div>
-        <div class="user" onclick="go_user()" id="goto-admin"><h3><p id="user">User</p></h3></div>
+        <div class="admin" id="goto-user"><h3 ><p id="admin">Admin</p></h3></div>
+        <div class="user"  id="goto-admin"><h3><p id="user">User</p></h3></div>
      </div>
 
      <div class="form"> 
@@ -61,14 +61,14 @@
 
       </div> 
 
-      <div class="links"> <a href="#" id="forgot">Forgot Password</a> <a href="#" onclick="show_signup()" id="signUp">Signup</a> 
+      <div class="links"> <a href="#" id="forgot">Forgot Password</a> <a href="#"  id="signUp">Signup</a> 
 
       </div> 
 
       <div class="inputBox"> 
 
-       <input type="submit" id="login_but" value="Login" onclick="checkPass()"> 
-
+       <input type="submit" id="login_but" value="Login" > 
+       <input type="submit" id="register_but" value="Register"> 
       </div> 
 
      </div> 
@@ -80,7 +80,7 @@
   </section> 
 
  
-  <script src="static/js/script.js"></script>
+  <script type="module"src="static/js/script.js"></script>
   <script src=""></script>
 </div>
 

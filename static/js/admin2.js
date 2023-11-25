@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+import { getDatabase, ref, set ,get,child} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB56ZVB4S8EBwZfVJNFjE0D4llVaSKD4d0",
@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: "G-RSHZPWZM4V"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
@@ -130,42 +130,71 @@ function SwitchPage (page_id) {
 
 let first_arr=[];
 let anser_arr=[];
-
+let buttons_ansr=[];
 
 function one_click()
 {
 
   console.log("created")
-  const first_divs=document.querySelectorAll('.first');
-  const have_divs=document.querySelectorAll('.have');
-  first_divs.forEach(index=>{
-  first_arr.push(index.textContent);
-  index.textContent="";
-   } )
- have_divs.forEach(index=>{
-  anser_arr.push(index.textContent);
-  index.textContent="";
-   })
- console.log(first_arr,anser_arr);
+  const first_divs=document.querySelectorAll('.question');
+  const have_divs=document.querySelectorAll('.answer');
+  const rows=parseInt(document.getElementById('numRows').value)
+  first_divs.forEach((element, index) => {
+	if (index % rows === 0) {
+		first_arr.push([]);
+	}
+	const currentArray = Math.floor(index / rows);
+	first_arr[currentArray].push(element.textContent);
+	element.textContent = "";
+});
+
+have_divs.forEach((element, index) => {
+	if (index % rows === 0) {
+		anser_arr.push([]);
+	}
+	const currentArray = Math.floor(index /rows);
+	anser_arr[currentArray].push(element.textContent);
+	element.textContent = "";
+});
+
+console.log(first_arr, anser_arr);
 }
 
 
 function Load_new_one()
 {
+	const header= document.getElementById('header').textContent;
 	counter++;
-	let header="tobe"
+	const numExercises = parseInt(document.getElementById('numCol').value);
+    const numRows = parseInt(document.getElementById('numRows').value);
+    
+	
+	const quetion_col=document.getElementById('question-col').value;
+	const answer_col=document.getElementById('answer-col').value;
+	const anser_buttons=document.querySelectorAll('.anser_but');
+	anser_buttons.forEach(index=>{
+		buttons_ansr.push(index.textContent);
+	})
+
 	const total_exerices=parseInt(document.getElementById('total-exercises').value);
 	
 	console.log(counter)
 	if(counter==total_exerices)
 	{   
-		// console.log(first_arr,anser_arr);
+		console.log(first_arr,anser_arr);
 		one_click();
 	
 	
 		set(ref(db,'Exercise/'+header),{
 			question:first_arr,
 			answer:anser_arr,
+			heading:header,
+			answer_button:buttons_ansr,
+			total_exerciese:total_exerices,
+			question_cols:quetion_col,
+			anser_col:answer_col,
+			total_rows:numExercises,
+			total_coloums:numRows,
 		})
 		.then(e=>alert("data added sussfully"))
 		.catch(err=>console.log(err));
@@ -184,7 +213,14 @@ function Load_new_one()
 
 }
 
+function assignclass(question,answer){
+	const containerBox = document.querySelectorAll('.container-box');
+	console.log(containerBox);
+	containerBox.forEach(index=>{
+		console.log(index.innerHTML)
+	})
 
+}
 
 
 const containerBox = document.querySelector('.container-box');
@@ -193,16 +229,30 @@ const containerBox = document.querySelector('.container-box');
 
 function create_box()
 {
+
 	const containerBox = document.querySelector('.container-box');
     const numExercises = parseInt(document.getElementById('numCol').value);
     const numRows = parseInt(document.getElementById('numRows').value);
     const answer_but=parseInt(document.getElementById('answer_but').value);
 	const total_exerices=parseInt(document.getElementById('total-exercises').value);
+	const quetion_col=document.getElementById('question-col').value;
+	const answer_col=document.getElementById('answer-col').value;
+
+	const question_col_arr=quetion_col.split('');
+	const answer_col_arr=answer_col.split('');
+
+	console.log(question_col_arr,"array spliting",answer_col_arr);
+
+
+
+
+
 	containerBox.innerHTML = '';
 
 	const ex_name=document.createElement('div');
 	ex_name.contentEditable=true;
-	ex_name.classList.add('header_input')
+	ex_name.classList.add('header_input');
+	ex_name.id='header';
 	containerBox.appendChild(ex_name);
 
 	const button=document.createElement('button')
@@ -227,27 +277,37 @@ function create_box()
 	 console.log("anser-but")
 	 let anser_button= document.createElement('div')
 	 anser_button.contentEditable=true;
-	 anser_button.classList.add('header_input');
+	 anser_button.classList.add('header_input','anser_but');
 	 anser_button_div.appendChild(anser_button);
 	}
  
-	 // Generate exercise rows dynamically
-	 for (let i = 1; i <= numExercises; i++) {
+	 
+	 for (let i = 0; i < numExercises; i++) {
 		 const rowDiv = document.createElement('div');
 		 rowDiv.classList.add('row-box');
 		 rowDiv.id = `row${i}`;
  
-		 const firstDiv = document.createElement('div');
-		 firstDiv.classList.add('first');
-		 firstDiv.contentEditable = true;
-		 rowDiv.appendChild(firstDiv);
+		 
  
-		 // Generate columns within the row
-		 for (let j = 0; j < numRows-1; j++) {
-			 let haveDiv = document.createElement('div');
-			 haveDiv.classList.add('have');
-			 haveDiv.contentEditable = true;
-			 rowDiv.appendChild(haveDiv);
+		
+		 for (let j = 0; j <numRows; j++) {
+			if (question_col_arr.includes(j.toString())) {
+                let haveDiv = document.createElement('div');
+                haveDiv.classList.add('question');
+                haveDiv.contentEditable = true;
+                rowDiv.appendChild(haveDiv);
+            } else if (answer_col_arr.includes(j.toString())) {
+                let haveDiv = document.createElement('div');
+                haveDiv.classList.add('answer');
+                haveDiv.contentEditable = true;
+                rowDiv.appendChild(haveDiv);
+            } else {
+                let haveDiv = document.createElement('div');
+                haveDiv.contentEditable = true;
+                rowDiv.appendChild(haveDiv);
+            }
+			 
+			
 		 }
  
 		 containerBox.appendChild(rowDiv);
@@ -255,6 +315,7 @@ function create_box()
 	 }
 	 containerBox.appendChild(anser_button_div);
 	 containerBox.appendChild(button);
+   
 
 }
 
@@ -265,6 +326,7 @@ function create_box()
 document.getElementById('generate-button').addEventListener('click',()=>{
 	create_table();
 })
+
 function create_table(){
 
 	counter=0;
@@ -281,11 +343,60 @@ function create_table(){
     }
 	else if(total_exerices>1)
 	{
-		create_box();
-
-        
+		create_box();        
 	}
 
 
 
 }
+
+const user_info_div=document.querySelector('.todo-list.user-info');
+let names_arr;
+
+
+async function loadUsers() {
+	try {
+	  const dbRef = ref(db, 'Users');
+	  const snapshot = await get(dbRef);
+  
+	  if (snapshot.exists()) {
+		const data = snapshot.val();
+		const usernames = Object.values(data).map(child => child.username);
+		console.log(usernames);
+		return usernames;
+	  } else {
+		console.log('No data available');
+		return [];
+	  }
+	} catch (error) {
+	  console.error('Error fetching data:', error);
+	  throw error;
+	}
+  }
+  
+
+  async function fetchAndDisplayUsers() {
+	try {
+	  const usernames = await loadUsers();
+	  
+	  const userList = document.querySelector('.todo-list.user-info');
+  
+	  usernames.forEach(username => {
+		const listItem = document.createElement('li');
+		listItem.classList.add('completed')
+		const usernameElement = document.createElement('p');
+		usernameElement.textContent = username;
+		const dotsIcon = document.createElement('i');
+		dotsIcon.classList.add('bx', 'bx-dots-vertical-rounded');
+  
+		listItem.appendChild(usernameElement);
+		listItem.appendChild(dotsIcon);
+		userList.appendChild(listItem);
+	  });
+	} catch (error) {
+	  alert('Error occurred while fetching users');
+	}
+  }
+  
+  
+  fetchAndDisplayUsers();

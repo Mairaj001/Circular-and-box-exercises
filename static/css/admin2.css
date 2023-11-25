@@ -46,6 +46,9 @@ body {
 	overflow-x: hidden;
 }
 
+.page,main{
+	overflow: none;
+}
 
 
 
@@ -323,6 +326,10 @@ body {
 	padding: 36px 24px;
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
+
+}
+.todo{
+	overflow-x:none ;
 	overflow-y: auto;
 }
 #content main .head-title {

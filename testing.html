@@ -3,56 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing</title>
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}"> -->
+    <link rel="stylesheet" href="static/css/user.css">
+    <link rel="stylesheet" href="static/css/admin2.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
-    <div class="row">
-        <div class="input">
-            <label for="numRows">How many rows </label>
-            <input type="text" id="numRows">
-        </div>
-        <div class="input">
-            <label for="numColumns">How many columns</label>
-            <input type="text" id="numColumns">
-        </div>
-    </div>
-    <div class="container">
+    <div class="wrapper-user">
+        <div class="navbar-user">
+            <div class="left">
+              USER
+            </div>
         
+            <div class="right">
+              <div class="user-iconn">
+                <input type="checkbox" class="checkbox" id="checkbox">
+               <label for="checkbox" class="checkbox-label">
+               <i class="fas fa-moon"></i>
+               <i class="fas fa-sun"></i>
+                <span class="ball"></span> 
+              </div>
+              <a href="index.html"><li >SignOut</li></a>
+              <li>About</li>
+              <a href="testing.html"><li>Testing</li></a>
+              
+            
+            </div>
+        </div>
+
+
+            <div class="content-user">
+              <div class="content-inner-div">
+                <div class="upper-div">
+                  <div class="loader">
+                    <div id="progress"></div>
+                  </div>
+                  <div class="timer-div" id="timer_div">
+                    00:00:00
+                  </div>
+                </div>
+                <div class="box-div" id="box-div">
+                  <div class="tense-div" id="tense-div" contenteditable="true">
+                   
+                  </div>
+                  <div class="container" id="container">
+
+                  </div>
+                
+                  
+                </div>
+                
+                </div>
+                <div class="next-but" style="display: none;">
+                  <button id="next" ><i class="ri-arrow-right-s-line"></i></button>
+                </div>
+                </div>
+                <div class="start-but" >
+                 <button id="start-button"  >Start</button>
+                </div>
+              </div>
+            </div>
+
+           <script src="static/js/script.js"></script>
+           <!-- <script src="static/js/box2.js"></script> -->
+           <script type="module" src="static/js/testing.js"></script>
+           <!-- <script src="static/js/box.js"></script> -->
     </div>
-    <button id="generate-button">Generate Table</button>
-    <div id="table-container"></div>
-    
-    
-    <script>
-    document.getElementById('generate-button').addEventListener('click', function() {
-    const container = document.getElementById('container');
-    const numberOfRows = 6; // You can set the number of rows here
-
-    // Clear previous content
-    container.innerHTML = '';
-
-    // Generate rows dynamically
-    for (let i = 1; i <= numberOfRows; i++) {
-        const rowDiv = document.createElement('div');
-        rowDiv.classList.add('row');
-        rowDiv.id = `row${i}`;
-
-        const firstDiv = document.createElement('div');
-        firstDiv.classList.add('first');
-        firstDiv.textContent = 'I ↓';
-
-        const haveDiv = document.createElement('div');
-        haveDiv.classList.add('have');
-        haveDiv.contentEditable = true;
-
-        rowDiv.appendChild(firstDiv);
-        rowDiv.appendChild(haveDiv);
-
-        container.appendChild(rowDiv);
-    }
-});
-
-    </script>
-    
 </body>
 </html>

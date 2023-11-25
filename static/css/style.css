@@ -13,6 +13,9 @@ body
   width: 100%;
   background: white;
 }
+.register_but{
+  display: none;
+}
 .wrapper{
     display: flex;
     justify-content: center;
@@ -94,7 +97,9 @@ body.dark h1, body.dark .support a ,body.dark .wrapper-user{color: #fff;}
 
 
 
-
+#register_but{
+  display: none;
+}
 
 
 
@@ -158,7 +163,12 @@ section
     color: #0f0;
     border-bottom: 5px solid #0f0;
   }
-
+.disable{
+  display: none;
+}
+.enable{
+  display: block;
+}
 section .signin
 {
   position: absolute;

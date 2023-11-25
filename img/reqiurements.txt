@@ -1,0 +1,7 @@
+In this project we have 2 portals
+
+1.Admin portal
+1.1 Set exercies:
+      In this we have to create the exercise by specifing the rows and the column of the exercises. There are 10 rows in one exercise if we make 10 exerice then the admin should fill all the boxes of the first exercise and so on till admin want to create it. after completion of the exercises should be upadted on the database
+1.2 Delete exerice:
+      in this admin should name the header of the exerice the exercie sholud be deleted

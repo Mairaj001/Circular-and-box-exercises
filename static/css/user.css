@@ -158,6 +158,15 @@ a{
   margin-bottom: 8px;
   /* background-color: blue; */
 }
+.anser_but{
+  
+	padding: 7px 25px;
+  height: 40px;
+  background-color: none;
+  margin: 0px 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
 .row div{
   display: flex;
   justify-content: center;
