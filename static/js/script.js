@@ -2,14 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyB56ZVB4S8EBwZfVJNFjE0D4llVaSKD4d0",
-  authDomain: "exercises-91d7d.firebaseapp.com",
-  databaseURL: "https://exercises-91d7d-default-rtdb.firebaseio.com",
-  projectId: "exercises-91d7d",
-  storageBucket: "exercises-91d7d.appspot.com",
-  messagingSenderId: "874784414500",
-  appId: "1:874784414500:web:683668e3d94cba9d50f1b1",
-  measurementId: "G-RSHZPWZM4V"
+  // add config
+  
 };
 
 

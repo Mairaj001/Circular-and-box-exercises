@@ -2,14 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
 import { getDatabase, ref, set ,get,child} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB56ZVB4S8EBwZfVJNFjE0D4llVaSKD4d0",
-  authDomain: "exercises-91d7d.firebaseapp.com",
-  databaseURL: "https://exercises-91d7d-default-rtdb.firebaseio.com",
-  projectId: "exercises-91d7d",
-  storageBucket: "exercises-91d7d.appspot.com",
-  messagingSenderId: "874784414500",
-  appId: "1:874784414500:web:683668e3d94cba9d50f1b1",
-  measurementId: "G-RSHZPWZM4V"
+// add firebase
 };
 
 
@@ -168,19 +161,21 @@ function Load_new_one()
 	const numExercises = parseInt(document.getElementById('numCol').value);
     const numRows = parseInt(document.getElementById('numRows').value);
     
+	console.log(counter);
 	
-	const quetion_col=document.getElementById('question-col').value;
-	const answer_col=document.getElementById('answer-col').value;
-	const anser_buttons=document.querySelectorAll('.anser_but');
-	anser_buttons.forEach(index=>{
-		buttons_ansr.push(index.textContent);
-	})
+	const quetion_col=getCheckedValues('radio_question');
+	const answer_col=getCheckedValues('radio_answer');
 
 	const total_exerices=parseInt(document.getElementById('total-exercises').value);
 	
 	console.log(counter)
 	if(counter==total_exerices)
 	{   
+		
+	const anser_buttons=document.querySelectorAll('.anser_but');
+	anser_buttons.forEach(index=>{
+		buttons_ansr.push(index.textContent);
+	})
 		console.log(first_arr,anser_arr);
 		one_click();
 	
@@ -213,19 +208,67 @@ function Load_new_one()
 
 }
 
-function assignclass(question,answer){
-	const containerBox = document.querySelectorAll('.container-box');
-	console.log(containerBox);
-	containerBox.forEach(index=>{
-		console.log(index.innerHTML)
-	})
 
-}
-
+const radioQuestionContainer = document.querySelector('.radio_question');
+const radioAnswerContainer = document.querySelector('.radio_answer');
 
 const containerBox = document.querySelector('.container-box');
+function generateCheckboxes(parentContainer, numColumns) {
+	// Create a container div for both radio_question and radio_answer
+	var combinedContainer = document.createElement("div");
+	combinedContainer.classList.add('combined-container');
+  
+	// Clear previous content
+	parentContainer.innerHTML = "";
+  
+	for (var i = 1; i <= numColumns; i++) {
+	  var label = document.createElement("label");
+	  label.setAttribute("for", `column-${i}`);
+	  label.textContent = `Column ${i}`;
+  
+	  var input = document.createElement("input");
+	  input.setAttribute("type", "checkbox");
+	  input.setAttribute("id", `column-${i}`);
+	  input.setAttribute("name", "columns");
+	  input.setAttribute("value", `column-${i}`);
+  
+	  combinedContainer.appendChild(label);
+	  combinedContainer.appendChild(input);
+	}
+    
+	parentContainer.classList.add('radio');
+	// Append the combined container to the parent container
+	parentContainer.appendChild(combinedContainer);
+ }
 
 
+document.getElementById("numRows").addEventListener("input", function() {
+	var questionCols = parseInt(this.value);
+
+	generateCheckboxes(radioQuestionContainer, questionCols);
+    generateCheckboxes(radioAnswerContainer, questionCols);
+});
+
+function getCheckedValues(containerId) {
+	var container = document.querySelector(`.${containerId} .combined-container`);
+  if (!container) {
+    console.error(`Container with class '${containerId}' not found`);
+    return [];
+  }
+  
+  var checkboxes = container.querySelectorAll('input[type="checkbox"]');
+  var checkedValues = [];
+
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+		var number = checkbox.id.split('-')[1]; 
+		checkedValues.push(number-1);
+		console.log(checkedValues);
+    }
+  });
+
+  return checkedValues;
+}
 
 function create_box()
 {
@@ -235,13 +278,15 @@ function create_box()
     const numRows = parseInt(document.getElementById('numRows').value);
     const answer_but=parseInt(document.getElementById('answer_but').value);
 	const total_exerices=parseInt(document.getElementById('total-exercises').value);
-	const quetion_col=document.getElementById('question-col').value;
-	const answer_col=document.getElementById('answer-col').value;
+	const quetion_col=getCheckedValues('radio_question');
+	const answer_col=getCheckedValues('radio_answer');
+    
+	console.log(quetion_col,answer_col);
 
-	const question_col_arr=quetion_col.split('');
-	const answer_col_arr=answer_col.split('');
+	const question_col_arr= quetion_col;
+	const answer_col_arr=answer_col
 
-	console.log(question_col_arr,"array spliting",answer_col_arr);
+	console.log(typeof(question_col_arr),"array spliting",answer_col_arr);
 
 
 
@@ -291,12 +336,12 @@ function create_box()
  
 		
 		 for (let j = 0; j <numRows; j++) {
-			if (question_col_arr.includes(j.toString())) {
+			if (question_col_arr.includes(j)) {
                 let haveDiv = document.createElement('div');
                 haveDiv.classList.add('question');
                 haveDiv.contentEditable = true;
                 rowDiv.appendChild(haveDiv);
-            } else if (answer_col_arr.includes(j.toString())) {
+            } else if (answer_col_arr.includes(j)) {
                 let haveDiv = document.createElement('div');
                 haveDiv.classList.add('answer');
                 haveDiv.contentEditable = true;

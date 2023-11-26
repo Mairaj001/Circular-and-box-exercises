@@ -3,14 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebas
 import { getDatabase, ref, set ,get,child} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB56ZVB4S8EBwZfVJNFjE0D4llVaSKD4d0",
-  authDomain: "exercises-91d7d.firebaseapp.com",
-  databaseURL: "https://exercises-91d7d-default-rtdb.firebaseio.com",
-  projectId: "exercises-91d7d",
-  storageBucket: "exercises-91d7d.appspot.com",
-  messagingSenderId: "874784414500",
-  appId: "1:874784414500:web:683668e3d94cba9d50f1b1",
-  measurementId: "G-RSHZPWZM4V"
+  // add the firebase config
 };
 
 // Initialize Firebase
@@ -31,7 +24,7 @@ async function Get_data()
 {
   const dbRef=ref(db);
 
-  await get(child(dbRef,'Exercise/'+'testdb')).then((snapshot)=>{
+  await get(child(dbRef,'Exercise/'+'testmairaj')).then((snapshot)=>{
     if(snapshot.exists())
     {
       console.log("yes table is exist");
@@ -90,8 +83,8 @@ function create_box(){
 	
 	
 
-	const question_col_arr=question_col.split('');
-	const answer_col_arr=answer_colums.split('');
+	const question_col_arr=question_col;
+	const answer_col_arr=answer_colums;
 
 	console.log(question_col_arr,"array spliting",answer_col_arr);
 
@@ -129,14 +122,14 @@ function create_box(){
         
 		
 		 for (let j = 0; j <numRows; j++) {
-			if (question_col_arr.includes(j.toString())) {
+			if (question_col_arr.includes(j)) {
                 
                 let haveDiv = document.createElement('div');
                 haveDiv.classList.add('question');
                
                 
                 rowDiv.appendChild(haveDiv);
-            } else if (answer_col_arr.includes(j.toString())) {
+            } else if (answer_col_arr.includes(j)) {
                 let haveDiv = document.createElement('div');
                 haveDiv.classList.add('answer');
                 haveDiv.contentEditable = true;
@@ -160,13 +153,13 @@ function create_box(){
      console.log(question_divss);
 
      question_divss.forEach((element, index) => {
-        const arrayIndex = Math.floor(index / 3); // 
-        const arrayToUse = questions[arrayIndex]; // Accessing the corresponding array using the index
+        const arrayIndex = Math.floor(index / 3); 
+        const arrayToUse = questions[arrayIndex]; 
         
-        const arrayElementIndex = index % 3; // To cycle through 0, 1, 2 for each set of 3 divs
-        const arrayElement = arrayToUse[arrayElementIndex]; // Accessing each element in the corresponding array
+        const arrayElementIndex = index % 3; 
+        const arrayElement = arrayToUse[arrayElementIndex]; 
         
-        // For example, setting text content of each .question element to the array element
+        
         element.textContent = arrayElement;
       });
 
